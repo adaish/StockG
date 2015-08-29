@@ -11,13 +11,13 @@ rm(list=ls()) #remove everything previous
 #getwd() #find working directory
 #setwd() #set working directory
 
-fish<-read.csv('fishdata_Bmsy.csv',header=T)                                  #CHANGE NAME OF EXCEL FILE but keep csv at the end within the ''
+fish<-read.csv('fishdata_Bmsy.csv',header=T)   #CHANGE NAME OF EXCEL FILE but keep csv at the end within the ''
 
 #Load excel file saved as csv file with correct associated headers of FishStock (Fishstock name), TBiomass (Total Biomass), SSB (Spawning Stock Biomass), 
 #MeanF( mean fish mortality), including where available the Bmsy, SSBlim and Fmsy which should be in a column.
 
 #Example header of the excel information format
-#   FishStock CertYear Year  TBiomass     SSB    MeanF    Bmsy SSBlim Fmsy
+#   FishStock AssessmentYear Year  TBiomass     SSB    MeanF    Bmsy SSBlim Fmsy
 #  cod-arct     2012  1946  4168882   1112776    0.1857 2568700 220000  0.4
 #  cod-arct     2012  1947  3692801   1165059    0.3047 2568700 220000  0.4
 #  cod-arct     2012  1948  3665819   1019114    0.3398 2568700 220000  0.4
@@ -37,7 +37,7 @@ pdf('Stock_plot2.pdf') #name of PDF file                                        
 
 source('StockG.r') #Load function
 
-exceltitle<-rbind(as.character(FishStock),CertYear,Year,TBiomass,SSB,MeanF,Bmsy,SSBlim,Fmsy)  #CHANGE HEADER NAMES IF DIFFERENT FROM THESE LISTED, KEEP IN SAME ORDER
+exceltitle<-rbind(as.character(FishStock),AssessmentYear,Year,TBiomass,SSB,MeanF,Bmsy,SSBlim,Fmsy)  #CHANGE HEADER NAMES IF DIFFERENT FROM THESE LISTED, KEEP IN SAME ORDER
 NF<-17 #Number of stock/fishery  #CHANGE THE NUMBER OF STOCK YOU WHAT TO CREATE GRAPHS FOR if you don't know copy and paste 'unique(FishStock)'.
 
 FISHSTOCK(NF,exceltitle)  #run function which creates the pdf of fish stock graphs
@@ -49,3 +49,4 @@ FISHSTOCK(NF,exceltitle)  #run function which creates the pdf of fish stock grap
 #If a graph does not appear it is because the data is not existant.
 #If the function does not run, it is most likely due to inconsistances in the data load, its worth re-formating cells to make them consist, if not send me your data and I will fix it.
 #Copy and paste interface ends here
+dev.off()

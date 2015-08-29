@@ -2,47 +2,6 @@
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Function Aim: Creates graphs for fish stock data on Total biomass, Spawning stock Biomass and Fishing mortality, including where availuable the Bmsy, SSBlim and Fmsy
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Interface section:-
-
-#Copy and paste from here
-#####rm(list=ls()) #remove everything previous
-#CHANGE DIRECTORY TO WHERE THIS FUNCTION (stockgraphcreator) is locate or save copy to local directory this is where your pdf of graphs will be saved to.
-
-#####fish<-read.csv('ICES2012forgraph.csv',header=T)                                  #CHANGE NAME OF EXCEL FILE but keep csv at the end within the ''
-
-#Load excel file saved as csv file with correct associated headers of FishStock (Fishstock name), TBiomass (Total Biomass), SSB (Spawning Stock Biomass), 
-#MeanF( mean fish mortality), including where available the Bmsy, SSBlim and Fmsy which should be in a column.
-
-#Example header of the excel information format
-#   FishStock CertYear Year  TBiomass     SSB    MeanF    Bmsy SSBlim Fmsy
-#  cod-arct     2012  1946  4168882   1112776    0.1857 2568700 220000  0.4
-#  cod-arct     2012  1947  3692801   1165059    0.3047 2568700 220000  0.4
-#  cod-arct     2012  1948  3665819   1019114    0.3398 2568700 220000  0.4
-#  cod-arct     2012  1949  3065111    729879    0.3619 2568700 220000  0.4
-#  cod-arct     2012  1950  2830103    615339    0.3566 2568700 220000  0.4
-#  cod-arct     2012  1951  3141009    568705    0.3966 2568700 220000  0.4
-
-#Remember to check data fill in all possible data. Make sure the data is all in the same format i.e for each column the same numerical decimals, no commas.
-#For fish stock names make sure there are no gaps i.e. 'cod art' chould be 'cod_art' and that they are consist for all the the rows otherwise the function wouldn't 
-# be able to recognise when the species has change to make new set of graphs.
-
-# What is created? 3 graphs of the time series given for each fish stocks- total biomass, spawning stock biomass and fishing mortality with the correlated reference points. 
- 
-#####names(fish)   #Show names of file headers
-#####attach(fish)  #Attach titles
-#####dev.off()     #close
-#####pdf('Stocki') #name of PDF file                                                 #CHANGE NAME OF PDF FILE
-
-#####source('stockgraphcreator.r') #Load function
-
-#####exceltitle<-rbind(FishStock,CertYear,Year,TBiomass,SSB,MeanF,Bmsy,SSBlim,Fmsy)  #CHANGE HEADER NAMES IF DIFFERENT FROM THESE LISTED, KEEP IN SAME ORDER
-#####NF<-17 #Number of stock/fishery                                                 #CHANGE THE NUMBER OF STOCK YOU WHAT TO CREATE GRAPHS FOR if you don't know copy and paste 'unique(FishStock)'.
-
-#####FISHSTOCK(NF,exceltitle)  #run function which creates the pdf of fish stock graphs
-
-#Now find pdf file in selected directory folder
-#Copy and paste interface ends here
-
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Function section:-
 
@@ -51,7 +10,7 @@ FISHSTOCK<-function(NF,exceltitle)
 
 #name the title  and content of excel file 
 FishStock<-as.character(exceltitle[1,])
-CertYear<-as.numeric(exceltitle[2,])
+AssessmentYear<-as.numeric(exceltitle[2,])
 Year<-as.numeric(exceltitle[3,] )
 TBiomass<-as.numeric(exceltitle[4,] )
 SSB<-as.numeric(exceltitle[5,])
@@ -233,7 +192,7 @@ for (II in 1:NF)
     if(!is.na(TBcurrent[1])) # GRAPH Total Biomass
     {
     plot(Y11,TBcurrent,type='l',lwd=2, xlab='Year',ylab='Total Biomass',main=c('Total Biomass of',FS[II]),ylim=c(0,(max(as.numeric(TBcurrent))+150000)),cex=1.5,cex.lab=1, cex.axis=1, cex.main=1)
-    mtext(paste(CertYear[II], " ",format(Sys.time(), "%d-%m-%Y")),cex=0.75, line=0, side=SOUTH<-1, adj=0, outer=TRUE) 
+    mtext(paste(AssessmentYear[II], " ",format(Sys.time(), "%d-%m-%Y")),cex=0.75, line=0, side=SOUTH<-1, adj=0, outer=TRUE) 
     mtext(c('Stock Status update'),NORTH<-3, line=0, adj=0.5, cex=1, col="dark blue", outer=TRUE)
     points(Y11[length(Y11)],TBcurrent[length(Y11)],col='red',pch=16,cex=1.5) 
     points(Y11[length(Y11)-1],TBcurrent[length(Y11)-1],col='black',pch=16,cex=1.5)     

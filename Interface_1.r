@@ -27,7 +27,7 @@ fish<-read.csv('fishdata.csv',header=T)
 #MeanF( mean fish mortality), including where available the Bmsy, SSBlim and Fmsy which should be in a column.
 
 #Example header of the excel information format
-#   FishStock CertYear Year  TBiomass     SSB    MeanF    Bmsy SSBlim Fmsy
+#   FishStock AssessmentYear Year  TBiomass     SSB    MeanF    Bmsy SSBlim Fmsy
 #  cod-arct     2012  1946  4168882   1112776    0.1857 2568700 220000  0.4
 #  cod-arct     2012  1947  3692801   1165059    0.3047 2568700 220000  0.4
 #  cod-arct     2012  1948  3665819   1019114    0.3398 2568700 220000  0.4
@@ -45,11 +45,11 @@ fish<-read.csv('fishdata.csv',header=T)
 names(fish)   #Show names of file headers
 attach(fish)  #Attach titles
 dev.off()     #close
-pdf('Stock_plot.pdf') #name of PDF file #CHANGE NAME OF PDF FILE
+pdf('Stock_plot1.pdf') #name of PDF file #CHANGE NAME OF PDF FILE
 
 source('StockG.r') #Load function
 
-exceltitle<-rbind(as.character(FishStock),CertYear,Year,TBiomass,SSB,MeanF,Bmsy,SSBlim,Fmsy)  #CHANGE HEADER NAMES IF DIFFERENT FROM THESE LISTED, KEEP IN SAME ORDER
+exceltitle<-rbind(as.character(FishStock),AssessmentYear,Year,TBiomass,SSB,MeanF,Bmsy,SSBlim,Fmsy)  #CHANGE HEADER NAMES IF DIFFERENT FROM THESE LISTED, KEEP IN SAME ORDER
 
 NF<-53 #Number of stock/fishery    #53 means all 53 ICES fish stocks
 #CHANGE THE NUMBER OF STOCK YOU WHAT TO CREATE GRAPHS FOR if you don't know copy and paste 'unique(FishStock)'.
@@ -63,3 +63,4 @@ FISHSTOCK(NF,exceltitle)  #run function which creates the pdf of fish stock grap
 #If a graph does not appear it is because the data is not existant.
 #If the function does not run, it is most likely due to inconsistances in the data load, its worth re-formating cells to make them consist, if not send me your data and I will fix it.
 #Copy and paste interface ends here
+dev.off()
