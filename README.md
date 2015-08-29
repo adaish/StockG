@@ -1,7 +1,7 @@
-#Stock Assessment Graph creator"
+#Stock Assessment Graph creator
 ## "StockG"
 ***
-###Function Aim: Creates graphs for fish stock assessment data  on Total biomass, Spawning stock Biomass and Fishing mortality, including where available the Bmsy, SSBlim and Fmsy.
+#####Function Aim: Creates graphs for fish stock assessment data  on Total biomass, Spawning stock Biomass and Fishing mortality, including where available the Bmsy, SSBlim and Fmsy.
 ***
 ![](Stock_graphs.png)
 
