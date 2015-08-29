@@ -1,19 +1,14 @@
----
-title: "Stock Assessment Graph creator"
-output: html_document
----
-
+#Stock Assessment Graph creator"
 ## "StockG"
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***
 ###Function Aim: Creates graphs for ICES fish stock assessment data  on Total biomass, Spawning stock Biomass and Fishing mortality, including where available the Bmsy, SSBlim and Fmsy.
-#----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***
 ![](Stock_graphs.png)
 
 
 * StockG = The Stock Assessment Graph Generator
-* Interface 1.r = Is the code to use WITHOUT target or limit lines (Bmsy, SSBlim & Fmsy) (correlated data is fishdata.csv)
+* Interface 1.r = Is the code to use WITHOUT target or limit lines (Bmsy, SSBlim & Fmsy)(correlated data is fishdata.csv)
 * Interface 2.r = Is the code to use WITH the target or limit lines (correlated data is fishdata_Bmsy.csv)
-
 * fishdata.csv = example ICES fish stock assessment data
 * Stock_plot1.pdf = example of what interface 1 produces
 * Stock_plot2.pdf = example of what interface 2 produces
@@ -96,6 +91,6 @@ NF<-17 #(This means there is 17 fish stocks in use from the fishdata.csv loaded)
 [Checkout the PDF example ](https://github.com/adaish/StockG/blob/master/Stock_plot2.pdf)
 
 ***
-Next set is to make these ggplot2 graphs with shiny dropdown for the data
+(Next step is to make these ggplot2 graphs with shiny dropdown for the data)
 
 
