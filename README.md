@@ -1,7 +1,7 @@
 #Stock Assessment Graph creator"
 ## "StockG"
 ***
-###Function Aim: Creates graphs for ICES fish stock assessment data  on Total biomass, Spawning stock Biomass and Fishing mortality, including where available the Bmsy, SSBlim and Fmsy.
+###Function Aim: Creates graphs for fish stock assessment data  on Total biomass, Spawning stock Biomass and Fishing mortality, including where available the Bmsy, SSBlim and Fmsy.
 ***
 ![](Stock_graphs.png)
 
@@ -22,10 +22,8 @@ fish<-read.csv("fishdata.csv",header=T)
 #You can change the name of the excel file but keep it csv
 ```
 
-####Download data from ICES Stock assessment database
+####Download data from ICES Stock assessment database or alternative stock assessment data provider i.e. NOAA
 Citition: "ICES Stock Database , 2012, 12. ICES, Copenhagen."
-
-<http://ices.dk/marine-data/Documents/CatchStats/Disclaimer_Stock_Database.pdf>
 
 <http://standardgraphs.ices.dk/stockList.aspx>
 
